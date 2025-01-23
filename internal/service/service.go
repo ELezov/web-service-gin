@@ -3,10 +3,14 @@ package service
 import (
 	"net/http"
 
+	"web-service-gin/internal/entity"
+
 	"github.com/gin-gonic/gin"
 )
 
-var wishes = []Wish{
+type Service struct{}
+
+var wishes = []entity.Wish{
 	{
 		ID:          "1",
 		Title:       "Skateboard",
@@ -46,11 +50,11 @@ var wishes = []Wish{
 }
 
 // getWishes responds with the list of all albums as JSON.
-func getWishes(c *gin.Context) {
+func GetWishes(c *gin.Context) {
 	c.IndentedJSON(http.StatusOK, wishes)
 }
 
-func getWishByID(c *gin.Context) {
+func GetWishByID(c *gin.Context) {
 	id := c.Param("id")
 
 	// Loop over the list of albums, looking for
